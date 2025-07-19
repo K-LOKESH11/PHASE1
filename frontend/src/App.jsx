@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api';
-import './app.css';
+import './App.css';
 
 const API_BASE = 'http://localhost:5000/api/buses';
 
