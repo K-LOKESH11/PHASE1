@@ -1,0 +1,193 @@
+/* Ensure body allows scrolling and no height constraint */
+html, body, #root {
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-y: auto;
+}
+
+/* body {
+  background-color: #f9f9f9;
+} */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* let content flow naturally */
+  align-items: center;      
+  padding: 20px 15px 60px;
+  box-sizing: border-box;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Main title */
+.app-title {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  user-select: none;
+}
+
+/* Search section */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* Suggestions dropdown */
+.suggestions-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 190px;
+  overflow-y: auto;
+  background: #34495e;
+  border: 1px solid #ccc;
+  border-top: none;
+  z-index: 1000;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  color: #f0f0f0;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover,
+.suggestion-item:focus {
+  background-color: #2980b9;
+  color: white;
+  outline: none;
+}
+
+/* Medium sized button */
+.medium-button {
+  padding: 10px 30px;
+  font-size: 18px;
+  background-color: #2980b9;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.medium-button:hover:not(:disabled),
+.medium-button:focus:not(:disabled) {
+  background-color: #1f5f85;
+  outline: none;
+}
+
+.medium-button:disabled {
+  background-color: #769dbf;
+  cursor: not-allowed;
+}
+
+/* Back button with same styling + margin auto on smaller widths */
+.back-button {
+  max-width: 250px;
+  margin-bottom: 15px;
+}
+
+/* Loading and error texts */
+.loading-text {
+  font-size: 18px;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+.error-text {
+  color: red;
+  margin-bottom: 20px;
+}
+
+/* Bus list styling */
+.bus-list {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 40px;
+  border-top: 1px solid #bdc3c7;
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+}
+
+.bus-list-item {
+  background-color: #ecf0f1;
+  margin-bottom: 8px;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  border: 1px solid #bdc3c7;
+  user-select: none;
+  color: #2c3e50;
+}
+
+.bus-list-item:hover,
+.bus-list-item:focus {
+  background-color: #d0d7de;
+  outline: none;
+}
+
+/* Map section */
+.map-section {
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.bus-title {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+/* Map loading error */
+.map-error {
+  color: red;
+  font-weight: 600;
+}
+
+.map-loading {
+  font-weight: 600;
+}
+
+/* Instruction below map */
+.map-instruction {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+}
