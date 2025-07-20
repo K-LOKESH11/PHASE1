@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api';
+import { useJsApiLoader, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import './App.css';
+import logo from './assets/panimalarlogo.png';
 
 const API_BASE = import.meta.env.PROD
   ? import.meta.env.VITE_API_BASE_URL
@@ -15,12 +16,13 @@ const mapContainerStyle = {
 
 const libraries = [];
 
-
 function MapComponent({ stops }) {
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'YOUR_GOOGLE_MAPS_API_KEY',
     libraries,
   });
+
+  const [selectedStop, setSelectedStop] = useState(null);
 
   if (loadError) return <div className="map-error">Error loading map</div>;
   if (!isLoaded) return <div className="map-loading">Loading map...</div>;
@@ -33,17 +35,67 @@ function MapComponent({ stops }) {
   };
 
   return (
-    <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={13}>
+    <GoogleMap
+      mapContainerStyle={mapContainerStyle}
+      center={center}
+      zoom={13}
+      onClick={() => setSelectedStop(null)}
+    >
       {stops.map((stop, idx) => (
         <Marker
           key={idx}
           position={{ lat: stop.latitude, lng: stop.longitude }}
           label={(idx + 1).toString()}
           title={stop.name}
-          onClick={() => openInGoogleMaps(stop.latitude, stop.longitude)}
+          onClick={() => setSelectedStop(stop)}
           cursor="pointer"
         />
       ))}
+      {selectedStop && (
+        <InfoWindow
+          position={{ lat: selectedStop.latitude, lng: selectedStop.longitude }}
+          onCloseClick={() => setSelectedStop(null)}
+        >
+          <div style={{
+            padding: '10px',
+            fontSize: '14px',
+            color: '#000',
+            lineHeight: '1.6',
+            fontFamily: '"Segoe UI", sans-serif',
+            minWidth: '180px',
+            maxWidth: '240px',
+          }}>
+            <div style={{
+              fontWeight: '600',
+              fontSize: '16px',
+              marginBottom: '5px',
+              color: '#333'
+            }}>
+              {selectedStop.name}
+            </div>
+            <div style={{
+              fontSize: '14px',
+              marginBottom: '10px'
+            }}>
+              Arrival Time: <strong>{selectedStop.time || 'N/A'}</strong>
+            </div>
+            <button
+              onClick={() => openInGoogleMaps(selectedStop.latitude, selectedStop.longitude)}
+              style={{
+                padding: '6px 10px',
+                backgroundColor: '#007bff',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '13px',
+              }}
+            >
+              Track in Google Maps
+            </button>
+          </div>
+        </InfoWindow>
+      )}
     </GoogleMap>
   );
 }
@@ -106,7 +158,6 @@ export default function App() {
     setLoading(false);
   };
 
-  // Handle back button click: clear search input, bus results, selected bus, errors
   const handleBackToResults = () => {
     setSelectedBus(null);
     setLocation('');
@@ -117,6 +168,10 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <header>
+        <img src={logo} alt="logo" className="pec-logo"/>
+      </header>
+
       <motion.h1 
         initial={{ opacity: 0, y: -20 }} 
         animate={{ opacity: 1, y: 0 }}
@@ -264,7 +319,7 @@ export default function App() {
 
           <MapComponent stops={selectedBus.stops} />
           <p className="map-instruction">
-            Click a stop marker to open in Google Maps.
+            Click a stop marker to view arrival time and open Google Maps.
           </p>
         </motion.div>
       )}
