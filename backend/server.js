@@ -12,6 +12,12 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+//vercel
+
+app.get("/",(req,res)=> {
+  res.json("hello");
+})
+
 // API routes
 app.use('/api/buses', busRoutes);
 
