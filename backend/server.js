@@ -9,7 +9,10 @@ const app = express();
 // Connect DB
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://bus-route-finder-client.vercel.app/",  // replace with your real frontend URL
+  credentials: true
+}));
 app.use(express.json());
 
 //vercel
