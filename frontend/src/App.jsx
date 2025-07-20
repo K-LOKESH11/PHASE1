@@ -4,7 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api';
 import './App.css';
 
-const API_BASE = '/api/buses';
+const API_BASE = import.meta.env.PROD
+  ? import.meta.env.VITE_API_BASE_URL
+  : '/api/buses';
 
 const mapContainerStyle = {
   width: '100%',
