@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api';
 import './App.css';
 
-const API_BASE = 'https://bus-route-finder-production.up.railway.app/api/buses';
+const API_BASE = '/api/buses';
 
 const mapContainerStyle = {
   width: '100%',
@@ -12,6 +12,7 @@ const mapContainerStyle = {
 };
 
 const libraries = [];
+
 
 function MapComponent({ stops }) {
   const { isLoaded, loadError } = useJsApiLoader({
