@@ -27,9 +27,9 @@ html, body, #root {
 /* logo styling */
 
 .pec-logo{
-  width: 120px;
+  width: 200px;
   height: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 10px rgba(16, 16, 16, 0.12);
 }
 
 /* Main title */

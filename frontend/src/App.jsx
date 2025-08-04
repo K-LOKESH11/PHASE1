@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useJsApiLoader, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import './App.css';
-import logo from './assets/panimalarlogo.png';
+import logo from './assets/velslogo.png';
 
 const API_BASE = import.meta.env.PROD
   ? import.meta.env.VITE_API_BASE_URL
