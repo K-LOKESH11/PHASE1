@@ -4,7 +4,6 @@ const stopSchema = new mongoose.Schema({
   name: { type: String, required: true },
   latitude: { type: Number, required: true },
   longitude: { type: Number, required: true },
-  time : { type: String, required: true },
 });
 
 const busSchema = new mongoose.Schema({
