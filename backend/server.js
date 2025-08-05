@@ -10,7 +10,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: "https://phase1-production.up.railway.app",  // replace with your real frontend URL
+  origin: "https://phase-1-q8hx.vercel.app",  // replace with your real frontend URL
   credentials: true
 }));
 app.use(express.json());
