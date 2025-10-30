@@ -13,8 +13,8 @@ async function seed() {
       routeName: 'Mylapore',
       locationsCovered: ['Mylapore', 'Mandavali', 'Teynampet','Nandanam','Saidapet','Guindy','Porur','Poonamallee','Panimalar Engineering College'],
       stops: [
-        { name: 'Mylapore Stop', latitude: 13.031650, longitude: 80.270099, time: '6:20 am'},
-        { name: 'Mandaveli', latitude: 13.025845, longitude: 80.262788 ,time: '6:15 am'},
+        { name: 'Mylapore Stop', latitude: 13.031650, longitude: 80.270099,},
+        { name: 'Sahila', latitude: 13.025845, longitude: 80.262788 ,},
         { name: 'Teynampet', latitude: 13.044403, longitude: 80.251648 },
         { name: 'Nandanam', latitude: 13.025324, longitude: 80.236306 },
         { name: 'Saidapet', latitude: 13.020817, longitude: 80.223954 },
